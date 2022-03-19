@@ -7,9 +7,11 @@ import {
 }   from 'react-native'
 import React, { useState, useEffect } from "react";
 import { getEpisodeName } from "../api/characters";
+import { useNavigation } from '@react-navigation/native';
 
-export default function Character({ character, navigation, props }) {
+export default function Character({ character}) {
     const [episode, setEpisode] = useState();
+    const navigation = useNavigation();
 
     const fetchEpisodeData = async () => {
         const request = await getEpisodeName(character.episode[0]);
@@ -22,8 +24,8 @@ export default function Character({ character, navigation, props }) {
 
     return (
         <TouchableWithoutFeedback 
-        onPress={() => {
-            this.props.navigation.navigate("CharacterDetails", {character})
+            onPress={()=>{
+                navigation.navigate("CharacterDetails", {character})
             }}
         >
             <View style={styles.character}>
@@ -94,7 +96,7 @@ const styles = StyleSheet.create({
         alignContent:"flex-start",
         paddingLeft: 10,
         height:"100%",
-        backgroundColor:"#3c3e44",
+        backgroundColor:"#129974",
         borderTopRightRadius:10,
         borderBottomRightRadius:10,
     },
@@ -155,7 +157,7 @@ const styles = StyleSheet.create({
         marginBottom:10,
     },
     Data__title: {
-        color: "#8a8b8c",
+        color: "#000000",
         fontSize: 15,
     },
     Data__location: {
