@@ -37,6 +37,7 @@ export default function CharactersScreen ({navigation}) {
         characters.filter((character)=>{
             return character.name.toLowerCase().includes(filterData.toLowerCase());
         })
+
     );
  
     return (
